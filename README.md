@@ -21,13 +21,13 @@ uni-app 腾讯云验证码插件，适配H5、微信小程序。[腾讯云验证
 ```
 // #ifdef MP-WEIXIN
 "usingComponents": {
-	"t-captcha": "plugin://myPlugin/t-captcha"
+    "t-captcha": "plugin://myPlugin/t-captcha"
 }
 // #endif
 ```
 
 **使用**  
-```
+``` vue
 import TencentCaptha from 'uni-tencent-captcha'
 
 <verify-code ref="slider" appId="your app-id" text="滑块验证" locale="zh-cn" eventName="getCode" @close="closeVerify" @verified="codeVerified"></verify-code>
@@ -39,25 +39,29 @@ this.$refs.slider.show()
 
 // 用户主动关闭验证码
 closeVerify() {
-	// todo
+    // todo
 }
 
 // 用户验证成功
 codeVerified(res) {
-	// 当前处理的事件名称
-	console.log(res.eventName)
-	// ticket randstr
-	// 注 微信小程序下无randstr
-	console.log('ticket: ', res.ticket, 'randstr: ', res.randstr)
+    // 当前处理的事件名称
+    console.log(res.eventName)
+    // ticket randstr
+    // 注 微信小程序下无randstr
+    console.log('ticket: ', res.ticket, 'randstr: ', res.randstr)
 }
 ```
 
 #### 属性
-appId: 注册的腾讯滑块验证码app-id
-locale: 多语言，支持`zh-cn``zh-hk``en`
-text: 显示的文本内容
-eventName: 当前处理的事件名称，若只有一个滑块验证事件，可不填
+|  属性   | 描述  |
+|  ----  | ----  |
+| appId  | 注册的腾讯滑块验证码app-id |
+| locale  | 多语言，支持`zh-cn``zh-hk``en` |
+| text | 显示的文本内容 |
+| eventName | 当前处理的事件名称，若只有一个滑块验证事件，可不填 |
 
 #### 回调函数
-close: 用户主动关闭验证码时触发
-verified: 用户前端验证成功，返回ticket和randstr，提交服务端验证。
+|  方法名   | 描述  |
+|  ----  | ----  |
+| verified  | 用户前端验证成功，返回ticket和randstr |
+| close  | 用户主动关闭验证码时触发 |
